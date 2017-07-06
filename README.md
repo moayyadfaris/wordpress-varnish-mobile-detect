@@ -2,6 +2,8 @@
 A vcl to server wordpress website with mobile detection
 
 use the following function in your php
+
+```php
 function isMobileDevice(){
 	if(isset($_SERVER['HTTP_X_VARNISH'])){
 		if ($_SERVER['HTTP_X_DEVICE']=='MOBILE'){
@@ -31,3 +33,4 @@ function isMobileDevice(){
 
     
 }
+```
