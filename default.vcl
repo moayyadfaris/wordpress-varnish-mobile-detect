@@ -18,8 +18,8 @@ backend default {
 
 acl purge {
     "localhost";
-  	"178.62.72.23"/24;
-    "10.16.0.2";
+  	"your-ip"/24;
+    
 }
 
 
