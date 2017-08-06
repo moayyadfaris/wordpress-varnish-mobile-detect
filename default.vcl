@@ -119,7 +119,7 @@ set beresp.ttl = 1h;
        return(retry);
  }
 
-    if (bereq.http.Cookie ~ "(UserID|_session)") {
+    if (bereq.http.Cookie ~ "(UserID|_session|wordpress_)") {
 	# if we get a session cookie...caching is a no-go
         set beresp.http.X-Cacheable = "NO:Got Session";
         set beresp.uncacheable = true;
@@ -138,6 +138,8 @@ set beresp.ttl = 1h;
           unset beresp.http.expires;
 
           # Set the clients TTL on this object
+          set beresp.http.Cache-Control = "max-age=31536000";
+          
           # Set how long Varnish will keep it
           set beresp.ttl = 1w;
 
@@ -189,7 +191,7 @@ set beresp.ttl = 1h;
 
 }
  set beresp.grace = 1w;
-
+return (deliver);
 }
 
 sub vcl_hash {
